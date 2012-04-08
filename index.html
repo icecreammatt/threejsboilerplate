@@ -182,7 +182,7 @@ function updateSkeleton() {
 
 			if( Detector.webgl ){
 				renderer = new THREE.WebGLRenderer({
-					antialias		: true,	// to get smoother output
+					antialias		: false,	// to get smoother output
 					preserveDrawingBuffer	: true	// to allow screenshot
 				});
 				renderer.setClearColorHex( 0xBBBBBB, 1 );
