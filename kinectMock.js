@@ -1,6 +1,6 @@
 var setup = false;
 var skeletonData = null;
-var USE_MOCK_DATA_TILL_CONNECTION = false;
+var USE_MOCK_DATA_TILL_CONNECTION = true;
 var USE_MOCK_DATA = true;
 var MAX_CUBES = 6;
 
@@ -15,14 +15,14 @@ gjoint.joints = [];
 gjoint.joints.length = 0;
 
 self.onmessage = function(event) {
+    if( !setup ) {
+	initKinect();
+	setup = true;
+    }
+    
     if( USE_MOCK_DATA ) {
 	var skeleton = getMockPlayerData();
         self.postMessage( JSON.stringify(skeleton) );
-	
-	if( !setup ) {
-	    initKinect();
-	    setup = true;
-	}
     } 
     else {
 	var skeleton = getKinectData();
